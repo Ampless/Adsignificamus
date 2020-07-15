@@ -58,8 +58,21 @@ UUID, but probably it is supposed to be unique to every instance of
 the app and not to every request. DEVICE\_NAME is supposed to be the
 name of the device running the app, most implementations just use some
 recent Samsung Galaxy phones for privacy reasons. BUNDLE\_ID is the
-bundle id of the app, most implementations pretend to be
+bundle id of the app, with most implementations pretending to be
 `de.heinekingmedia.dsbmobile`. DATETIME is the current date and time
 as printed by ECMAScript, which is ISO 8601 with a Z at the end.
 
-For the response the actual data is a really big JSON.
+For the response the actual data is a really big JSON, which we will
+not care to fully document here. But for getting the plans this is
+enough:
+```dart
+if (actualData['Resultcode'] != 0)
+        throw Error(actualData['ResultStatusInfo']);
+
+for(var p in actualData['ResultMenuItems'][0]['Childs'][0]
+                       ['Root']['Childs']) {
+        String url = plan['Childs'][0]['Detail'];
+        String title = plan['Title'];
+        outputPlan(title, url);
+}
+```
