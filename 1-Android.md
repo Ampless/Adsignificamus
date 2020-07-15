@@ -14,6 +14,7 @@ There are seven known requests:
 * SubjectsType (4)
 * ErrorType (5)
 * PushSettings (6)
+
 But only one of them, GetData (1), is ever used.
 
 ## GetData
@@ -21,28 +22,28 @@ GetData is sent over an HTTP POST request.
 
 The body of the request looks like this:
 ```js
-{"req":{"Data":"DATA","DataType":1}}
+{ "req": { "Data": "DATA", "DataType": 1 } }
 ```
 
 The body of the response looks like this:
 ```js
-{"d":"DATA"}
+{ "d": "DATA" }
 ```
 
 DATA is the actual data compressed with GZIP and encoded as Base64.
 The actual data is a string, which for the request looks like this:
 ```js
 {
-    "UserId":"USERNAME",
-    "UserPw":"PASSWORD",
-    "AppVersion":"APP_VERSION",
-    "Language":"LANGUAGE",
-    "OsVersion":"OS_VERSION",
-    "AppId":"APP_ID",
-    "Device":"DEVICE_NAME",
-    "BundleId":"BUNDLE_ID",
-    "Date":"DATETIME",
-    "LastUpdate":"DATETIME"
+    "UserId": "USERNAME",
+    "UserPw": "PASSWORD",
+    "AppVersion": "APP_VERSION",
+    "Language": "LANGUAGE",
+    "OsVersion": "OS_VERSION",
+    "AppId": "APP_ID",
+    "Device": "DEVICE_NAME",
+    "BundleId": "BUNDLE_ID",
+    "Date": "DATETIME",
+    "LastUpdate": "DATETIME"
 }
 ```
 
