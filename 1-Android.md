@@ -20,18 +20,18 @@ But only one of them, GetData (1), is ever used.
 GetData is sent over an HTTP POST request.
 
 The body of the request looks like this:
-```
+```js
 {"req":{"Data":"DATA","DataType":1}}
 ```
 
 The body of the response looks like this:
-```
+```js
 {"d":"DATA"}
 ```
 
 DATA is the actual data compressed with GZIP and encoded as Base64.
 The actual data is a string, which for the request looks like this:
-```
+```js
 {
     "UserId":"USERNAME",
     "UserPw":"PASSWORD",
@@ -69,10 +69,13 @@ enough:
 if (actualData['Resultcode'] != 0)
         throw Error(actualData['ResultStatusInfo']);
 
-for(var p in actualData['ResultMenuItems'][0]['Childs'][0]
-                       ['Root']['Childs']) {
+for (var p in actualData['ResultMenuItems'][0]['Childs'][0]
+                        ['Root']['Childs']) {
         String url = plan['Childs'][0]['Detail'];
         String title = plan['Title'];
         outputPlan(title, url);
 }
 ```
+
+Parsing the plans from the HTML depends on the format of them, which
+usually is like Untis always does HTML.
