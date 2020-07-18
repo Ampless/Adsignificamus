@@ -12,7 +12,7 @@ three different APIs known to us.
 ## The implementations
 This is an incomplete list of DSBMobile API implementations:
 
-###### [Amplissimus](https://github.com/Amplissimus/Amplissimus/blob/master/amplissimus/lib/dsbapi.dart)
+###### [Amplessimus](https://github.com/Ampless/Amplessimus/blob/master/amplissimus/lib/dsbapi.dart)
 * Language: Dart
 * API: Android
 * Supported data types: plans
@@ -24,7 +24,7 @@ This is an incomplete list of DSBMobile API implementations:
 * Simulated OS Version: 29 10.0
 * Simulated Language: German (de)
 
-###### [pydsb](https://github.com/sn0wmanmj/pydsb/blob/master/pydsb/__init__.py)
+###### [pydsb (1)](https://github.com/sn0wmanmj/pydsb/blob/master/pydsb/__init__.py)
 * Language: Python
 * API: Android (2.x), iOS (1.x)
 * Supported data types: plans, news, postings
@@ -71,3 +71,71 @@ This is an incomplete list of DSBMobile API implementations:
 * Simulated Version: 2.5.9
 * Simulated OS Version: 27 8.1.0
 * Simulated Language: German (de)
+
+###### [DSBAPI](https://github.com/TheNoim/DSBAPI/blob/master/src/index.js)
+* Language: JavaScript
+* API: Android
+* Supported data types: returns the raw json (+experimental filtering)
+* Supported extra features: user-agent spoofing by default
+* Supported requests: 1 (GetData)
+* Simulated Bundle ID: de.digitales-schwarzes-brett.dsblight
+* Simulated Device: iPhone
+* Simulated Version: 2.5.6
+* Simulated OS Version: 13.2.2
+* Simulated Language: English (en-DE)
+
+###### [dsb-go](https://github.com/irgendwr/dsb-go/blob/master/dsb.go)
+* Language: Go
+* API: Android
+* Supported data types: plans, news
+* Supported extra drawbacks: custom user-agent ("dsb-go")
+* Supported requests: 1 (GetData)
+* Simulated Bundle ID: de.heinekingmedia.dsbmobile
+* Simulated Device: Nexus 4
+* Simulated Version: 2.5.9
+* Simulated OS Version: 27 8.1.0
+* Simulated Language: German (de)
+
+###### [dsbmobile-php-api](https://github.com/irgendwr/dsb-go/blob/master/dsb.go)
+* Language: PHP
+* API: Android
+* Supported data types: plans, news
+* Supported extra features: faked referer header
+* Supported requests: 1 (GetData)
+* Simulated Bundle ID: de.heinekingmedia.inhouse.dsbmobile.web
+* Simulated Device: WebApp
+* Simulated Version: 2.3
+* Simulated OS Version: an empty string
+* Simulated Language: German (de)
+
+###### [pydsb (2)](https://github.com/ScholliYT/pydsb/blob/master/pydsb.py)
+* Language: Python
+* API: iOS
+* Supported data types: plans, news (seems weird, may not work)
+
+###### [DSBMobileBot](https://github.com/ScholliYT/DSBMobileBot/blob/master/scraper/src/dsbmobil_scraper.py)
+* Language: Python
+* API: iOS
+* Supported data types: plans
+
+###### [myplan](https://github.com/jrheiner/myplan/blob/master/app/src/main/java/de/myplan/android/MyplanService.java)
+* Language: Java
+* API: iOS
+* Supported data types: plans
+* Supported extra features: a custom app (havent tried it, might be cool)
+
+###### [DSBot](https://github.com/sargantana/DSBot/blob/master/scraper)
+* Language: Shell (wget)
+* API: Unknown (looks like Web at first glance, but is significantly different)
+* Supported data types: plans (not 100% sure about that)
+* Supported extra drawbacks: only logs in and downloads the html, nothing else
+
+###### [DSB - Abrage](https://forum.iobroker.net/topic/19140/dsb-abrage)
+* Language: JavaScript
+* API: iOS
+* Supported data types: plans, news
+
+###### [Untitled](https://pastebin.com/ds0AjK6T)
+* Language: Python
+* API: iOS
+* Supported data types: plans
