@@ -96,7 +96,29 @@ This is an incomplete list of DSBMobile API implementations:
 * Simulated OS Version: 27 8.1.0
 * Simulated Language: German (de)
 
-###### [dsbmobile-php-api](https://github.com/irgendwr/dsb-go/blob/master/dsb.go)
+###### [Vertretungsplangak\_Bot (1)](https://github.com/MakerStuff/Vertretungsplangak_Bot/blob/master/dsbapi/dsbsession_android.py)
+* Language: Python
+* API: Android
+* Supported extra drawbacks: no parsing
+* Supported requests: 1 (GetData)
+* Simulated Bundle ID: de.heinekingmedia.dsbmobile
+* Simulated Device: Samsung Galaxy S7 Edge (SM-G935F)
+* Simulated Version: 2.5.9
+* Simulated OS Version: 28 9
+* Simulated Language: German (de)
+
+###### [Vertretungsplangak\_Bot (2)](https://github.com/MakerStuff/Vertretungsplangak_Bot/blob/master/dsbapi/dsbsession_web.py)
+* Language: Python
+* API: Web
+* Supported extra drawbacks: no parsing, constant Date and LastUpdate
+* Supported requests: 1 (GetData)
+* Simulated Bundle ID: de.heinekingmedia.inhouse.dsbmobile.web
+* Simulated Device: WebApp
+* Simulated Version: 2.3
+* Simulated OS Version: a good User Agent (Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.70 Safari/537.36)
+* Simulated Language: German (de)
+
+###### [dsbmobile-php-api](https://github.com/irgendwr/dsbmobile-php-api/blob/master/dsb_api.php)
 * Language: PHP
 * API: Android
 * Supported data types: plans, news
@@ -128,7 +150,7 @@ This is an incomplete list of DSBMobile API implementations:
 * Language: Shell (wget)
 * API: Unknown (looks like Web at first glance, but is significantly different)
 * Supported data types: plans (not 100% sure about that)
-* Supported extra drawbacks: only logs in and downloads the html, nothing else
+* Supported extra drawbacks: no parsing
 
 ###### [DSB - Abrage](https://forum.iobroker.net/topic/19140/dsb-abrage)
 * Language: JavaScript
