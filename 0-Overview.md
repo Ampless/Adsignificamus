@@ -1,8 +1,9 @@
 # Chapter 0 – An overview
 There are many different DSBMobile API implementations and most of
-them…are the same. This is because of pydsb, which can be considered
-the reference implementation of the Android API. But there are still
-three different APIs known to us.
+them…are the same. This is because of pydsb (1), which can be
+considered the reference implementation of the Android API. But there
+are still three different APIs known to us, and two more with only one
+implementation each.
 
 ## The APIs
 * The Android API (chapter 1)
