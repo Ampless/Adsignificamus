@@ -161,3 +161,8 @@ This is an incomplete list of DSBMobile API implementations:
 * Language: Python
 * API: iOS
 * Supported data types: plans
+
+###### [vertretungsplan.io](https://codeberg.org/vertretungsplan/integration-dsb/src/branch/master/src/client/index.ts)
+* Language: TypeScript
+* API: Unknown (mobileapi.dsbcontrol.de)
+* Supported data types: plans, news, "documents" (idk what that is)
