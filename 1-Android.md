@@ -18,7 +18,8 @@ There are seven known requests:
 But only one of them, GetData (1), is ever used.
 
 ## GetData
-GetData is sent over an HTTP POST request.
+GetData is sent over an HTTP POST request to
+`https://app.dsbcontrol.de/JsonHandler.ashx/GetData`.
 
 The body of the request looks like this:
 ```js
@@ -72,11 +73,12 @@ if (actualData['Resultcode'] != 0)
 
 for (var p in actualData['ResultMenuItems'][0]['Childs'][0]
                         ['Root']['Childs']) {
-        String url = plan['Childs'][0]['Detail'];
-        String title = plan['Title'];
+        var url = p['Childs'][0]['Detail'];
+        var title = p['Title'];
         outputPlan(title, url);
 }
 ```
 
 Parsing the plans from the HTML depends on the format of them, which
-usually is like Untis always does HTML.
+usually is like Untis always does HTML. But the HTML format is not
+documented here, because it does not depend on the DSB API used.
