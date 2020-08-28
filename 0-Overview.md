@@ -23,7 +23,7 @@ This is an incomplete list of DSBMobile API implementations:
 * Simulated Device: Samsung Galaxy S8 (SM-G950F)
 * Simulated Version: 2.5.9
 * Simulated OS Version: 29 10.0
-* Simulated Language: German (de)
+* Simulated Language: User selectable, German (de) by default
 
 ###### [pydsb (1)](https://github.com/sn0wmanmj/pydsb/blob/master/pydsb/__init__.py)
 * Language: Python
@@ -145,7 +145,7 @@ This is an incomplete list of DSBMobile API implementations:
 * Language: Java
 * API: iOS
 * Supported data types: plans
-* Supported extra features: a custom app (havent tried it, might be cool)
+* Supported extra features: a custom app (haven't tried it, might be cool)
 
 ###### [DSBot](https://github.com/sargantana/DSBot/blob/master/scraper)
 * Language: Shell (wget)
