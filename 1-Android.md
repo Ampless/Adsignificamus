@@ -1,7 +1,7 @@
 # Chapter 1 - The Android API
 This is the most-used API of DSBMobile. All official implementations
 seem to point towards using it and we do not know of any, except the
-Web, using anything else. It does **not** need any kind of session.
+Web, using anything else. It does **not** require any kind of session.
 Like the other APIs it uses HTTPS for what could be referred to as
 Layer 4 or 5 in the OSI Model.
 
