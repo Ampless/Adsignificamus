@@ -13,17 +13,17 @@ implementation each.
 ## The implementations
 This is an incomplete list of DSBMobile API implementations:
 
-###### [Amplessimus](https://github.com/Ampless/Amplessimus/blob/master/amplissimus/lib/dsbapi.dart)
+###### [dsbuntis](https://github.com/Ampless/dsbuntis/blob/master/lib/dsbapi.dart)
 * Language: Dart
 * API: Android
 * Supported data types: plans
-* Supported extra features: sorting and searching, an app even better than DSBMobile
+* Supported extra features: sorting and searching
 * Supported requests: 1 (GetData)
 * Simulated Bundle ID: de.heinekingmedia.dsbmobile
 * Simulated Device: Samsung Galaxy S8 (SM-G950F)
 * Simulated Version: 2.5.9
 * Simulated OS Version: 29 10.0
-* Simulated Language: User selectable, German (de) by default
+* Simulated Language: configurable, German (de) by default
 
 ###### [pydsb (1)](https://github.com/sn0wmanmj/pydsb/blob/master/pydsb/__init__.py)
 * Language: Python
