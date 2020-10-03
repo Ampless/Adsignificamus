@@ -81,5 +81,5 @@ for (var p in actualData['ResultMenuItems'][0]['Childs'][0]
 
 Parsing the plans from the HTML depends on the format of them, which
 usually is like Untis always does HTML. But the HTML format is not
-documented here, because it does necessarily not depend on the DSB API
+documented here, because it does not necessarily depend on the DSB API
 used.
