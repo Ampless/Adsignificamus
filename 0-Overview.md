@@ -167,3 +167,11 @@ This is an incomplete list of DSBMobile API implementations:
 * Language: TypeScript
 * API: Unknown (mobileapi.dsbcontrol.de)
 * Supported data types: plans, news, "documents" (idk what that is)
+
+### Other interesting URLs
+
+These are some resources for learing things, you might need while
+building DSB API implementations:
+
+* https://pastebin.com/7XZD38V5
+* https://light.dsbcontrol.de/DSBlightWebsite/(S(kvgpcwcoqorwq3xxgbx42u2b))/Homepage/IFrame.aspx
