@@ -6,8 +6,8 @@ are still three different APIs known to us, and two more with only one
 implementation each.
 
 ## The APIs
-* The Android API (chapter 1)
-* The Mobile API (chapter 2)
+* The Mobile API (chapter 1)
+* The Android API (chapter 2)
 * The Web API (chapter 3)
 * The iOS API (chapter 4)
 
