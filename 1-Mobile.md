@@ -22,9 +22,9 @@ The arguments are
 
 `BUNDLE` is the bundle id, usually `de.heinekingmedia.dsbmobile`.
 
-`VER` is the app version, current implementations pretend to be `35`.
+`VER` is the DSBMobile app version.
 
-`OSVER` is the OS version, current implementations pretend to be on `22`.
+`OSVER` is the OS version, for example on Android the API Version.
 
 `ID` and `PASS` are kinda obvious.
 
@@ -42,5 +42,4 @@ for (var plan in json) {
 
 Parsing the plans from the HTML depends on the format of them, which
 usually is like Untis always does HTML. But the HTML format is not
-documented here, because it does not necessarily depend on the DSB API
-used.
+documented here, because it does not depend on the DSB API used.
