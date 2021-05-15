@@ -1,5 +1,5 @@
 # Adsignificamus
-these some docs for heinekingmedia's dsbmobile api
+These are some docs for heinekingmedia's DSBMobile API.
 
 # Licensing
 You can license the files in this repository under the terms of the

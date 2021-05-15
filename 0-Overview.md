@@ -2,25 +2,27 @@
 There are many different DSBMobile API implementations and most of
 them…are the same. This is because of pydsb (1), which can be
 considered the reference implementation of the Android API. But there
-are still three different APIs known to us, and two more with only one
+are still four different APIs known to us, and two more with only one
 implementation each.
 
 ## The APIs
-* The Mobile API (chapter 1)
-* The Android API (chapter 2)
-* The Web API (chapter 3)
-* The iOS API (chapter 4)
+* Mobile API (chapter 1)
+* Android API (chapter 2)
+* Web API (chapter 3)
+* iOS API (chapter 4)
 
 ## The implementations
 This is an incomplete list of DSBMobile API implementations:
 
 ### Mobile API
 
-| Implementation                                                             | Language   | Data types             | Extra features        | Bundle ID                   | App Version | OS Version |
-|----------------------------------------------------------------------------|------------|------------------------|-----------------------|-----------------------------|-------------|------------|
-| [dsbuntis ≥3](https://github.com/Ampless/dsbuntis)                         | Dart       | Plans                  | Sorting and Searching | de.heinekingmedia.dsbmobile | 35          | 22         |
-| [pydsb (1) ≥2.2](https://github.com/sn0wmanmj/pydsb)                       | Python     | Plans, News, Postings  | DSB-based Previews    | de.heinekingmedia.dsbmobile | 35          | 22         |
-| [vertretungsplan.io](https://codeberg.org/vertretungsplan/integration-dsb) | TypeScript | Plans, News, Documents |                       | de.heinekingmedia.dsbmobile | (empty)     | (empty)    |
+| Implementation                                                             | Language   | Data types             | Extra features                                          | Bundle ID                   | App Version | OS Version |
+|----------------------------------------------------------------------------|------------|------------------------|---------------------------------------------------------|-----------------------------|-------------|------------|
+| [dsbuntis ≥3](https://github.com/Ampless/dsbuntis)                         | Dart       | Plans                  | Sorting, Searching and DSB-based Previews               | de.heinekingmedia.dsbmobile | 36          | 30         |
+| [dsb-api](https://github.com/CinePlays/dsb-api)                            | Dart       | Plans, News, Documents | Violates Ampless Copyleft (no notice about copied code) | de.heinekingmedia.dsbmobile | 36          | 30         |
+| [pydsb (1) ≥2.2](https://github.com/sn0wmanmj/pydsb)                       | Python     | Plans, News, Postings  | DSB-based Previews                                      | de.heinekingmedia.dsbmobile | 35          | 22         |
+| [vertretungsplan.io](https://codeberg.org/vertretungsplan/integration-dsb) | TypeScript | Plans, News, Documents |                                                         | (empty)                     | (empty)     | (empty)    |
+| [DSBDirect](https://notabug.org/fynngodau/DSBDirect)                       | Java       | Plans, News, Documents |                                                         | (empty)                     | (empty)     | (empty)    |
 
 ### Android API
 
