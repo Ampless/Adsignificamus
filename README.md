@@ -5,7 +5,7 @@ These are some docs for heinekingmedia's DSBMobile API.
 You can license the files in this repository under the terms of the
 [CC BY-ND license](https://creativecommons.org/licenses/by-nd/4.0/).
 
-# Section 0 – An overview
+# 0 An overview
 There are many different DSBMobile API implementations and most of
 them…are the same. This is because of pydsb (1), which can be
 considered the reference implementation of the Android API. But there
@@ -13,23 +13,24 @@ are still four different APIs known to us, and two more with only one
 implementation each.
 
 ## The APIs
-* Mobile API (chapter 1)
-* Android API (chapter 2)
-* Web API (chapter 3)
-* iOS API (chapter 4)
+* Mobile API (Section 1)
+* Android API (Section 2)
+* Web API (Section 2.1)
+* iOS API (Section 3)
 
 ## The implementations
 This is an incomplete list of DSBMobile API implementations:
 
 ### Mobile API
 
-| Implementation                                                             | Language   | Data types                    | Extra features                                          | Bundle ID                   | App Version | OS Version |
-|----------------------------------------------------------------------------|------------|-------------------------------|---------------------------------------------------------|-----------------------------|-------------|------------|
-| [dsbuntis ≥3](https://github.com/Ampless/dsbuntis)                         | Dart       | Plans (others with a raw API) | Sorting, Searching and DSB-based Previews               | de.heinekingmedia.dsbmobile | 36 (configurable) | 30 (configurable) |
-| [dsb-api](https://github.com/CinePlays/dsb-api)                            | Dart       | Plans, News, Documents        | Violates Ampless Copyleft (no notice about copied code) | de.heinekingmedia.dsbmobile | 36                | 30                |
-| [pydsb (1) ≥2.2](https://github.com/sn0wmanmj/pydsb)                       | Python     | Plans, News, Postings         | DSB-based Previews                                      | de.heinekingmedia.dsbmobile | 35                | 22                |
-| [vertretungsplan.io](https://codeberg.org/vertretungsplan/integration-dsb) | TypeScript | Plans, News, Documents        |                                                         | (empty)                     | (empty)           | (empty)           |
-| [DSBDirect](https://notabug.org/fynngodau/DSBDirect)                       | Java       | Plans, News, Documents        |                                                         | (empty)                     | (empty)           | (empty)           |
+| Implementation                                                             | Language   | Data types                    | Extra features                                          | Bundle ID                   | App Version        | OS Version         |
+|----------------------------------------------------------------------------|------------|-------------------------------|---------------------------------------------------------|-----------------------------|--------------------|--------------------|
+| [dsbuntis ≥3](https://github.com/Ampless/dsbuntis)                         | Dart       | Plans (others with a raw API) | Sorting, Searching and DSB-based Previews               | de.heinekingmedia.dsbmobile | 36 (configurable)  | 30 (configurable)  |
+| [dsb-api](https://github.com/CinePlays/dsb-api)                            | Dart       | Plans, News, Documents        | Violates Ampless Copyleft (no notice about copied code) | de.heinekingmedia.dsbmobile | 36                 | 30                 |
+| [pydsb (1) ≥2.2](https://github.com/sn0wmanmj/pydsb)                       | Python     | Plans, News, Postings         | DSB-based Previews                                      | de.heinekingmedia.dsbmobile | 35                 | 22                 |
+| [dsbmobile.js](https://github.com/Tch1b0/dsbmobile.js)                     | TypeScript | Plans, News, Documents        | ?                                                       | ? (probably empty)          | ? (probably empty) | ? (probably empty) |
+| [vertretungsplan.io](https://codeberg.org/vertretungsplan/integration-dsb) | TypeScript | Plans, News, Documents        |                                                         | (empty)                     | (empty)            | (empty)            |
+| [DSBDirect](https://notabug.org/fynngodau/DSBDirect)                       | Java       | Plans, News, Documents        |                                                         | (empty)                     | (empty)            | (empty)            |
 
 ### Android API
 
@@ -48,14 +49,14 @@ This is an incomplete list of DSBMobile API implementations:
 
 ### Web API
 
-[Vertretungsplangak\_Bot (2)](https://github.com/MakerStuff/Vertretungsplangak_Bot)
-Python
-* Supported extra drawbacks: no parsing, constant Date and LastUpdate
+#### [Vertretungsplangak\_Bot (2)](https://github.com/MakerStuff/Vertretungsplangak_Bot)
+* Language: Python
+* Drawbacks: no parsing, constant Date and LastUpdate
 * Supported requests: 1 (GetData)
 * Simulated Bundle ID: de.heinekingmedia.inhouse.dsbmobile.web
 * Simulated Device: WebApp
 * Simulated Version: 2.3
-* Simulated OS Version: a good User Agent (Mozilla/5.0 (X11; Linux x86\_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.70 Safari/537.36)
+* Simulated OS Version: Mozilla/5.0 (X11; Linux x86\_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.70 Safari/537.36
 * Simulated Language: German (de)
 
 ### iOS API
@@ -85,7 +86,7 @@ building DSB API implementations:
 * https://pastebin.com/7XZD38V5
 * https://light.dsbcontrol.de/DSBlightWebsite/(S(kvgpcwcoqorwq3xxgbx42u2b))/Homepage/IFrame.aspx
 
-# Section 1 - The Mobile API
+# 1 The Mobile API
 This is the simplest known API of DSBMobile. It **does** require the use of
 sessions/tokens. Like the other APIs it uses HTTPS for what could be referred to
 as Layer 4 or 5 in the OSI Model. All requests are `GET` requests.
@@ -131,7 +132,7 @@ Parsing the plans from the HTML depends on the format of them, which
 usually is like Untis always does HTML. But the HTML format is not
 documented here, because it does not depend on the DSB API used.
 
-# Section 2 - The Android API
+# 2 The Android API
 
 This was the most-used API of DSBMobile. Most implementations used it
 It does **not** require any kind of session. Like the other APIs it uses HTTPS
@@ -212,18 +213,20 @@ to be `de.heinekingmedia.dsbmobile`.
 which is ISO 8601 with a Z at the end.
 
 ### Response
+
 For the response the actual data is a really big JSON, which we will
 not care to fully document here. But for getting the plans this is
 enough:
+
 ```dart
 if (actualData['Resultcode'] != 0)
-        throw Error(actualData['ResultStatusInfo']);
+  throw Error(actualData['ResultStatusInfo']);
 
 for (var p in actualData['ResultMenuItems'][0]['Childs'][0]
                         ['Root']['Childs']) {
-        var url = p['Childs'][0]['Detail'];
-        var title = p['Title'];
-        outputPlan(title, url);
+  var url = p['Childs'][0]['Detail'];
+  var title = p['Title'];
+  outputPlan(title, url);
 }
 ```
 
@@ -231,11 +234,16 @@ Parsing the plans from the HTML depends on the format of them, which
 usually is like Untis always does HTML. But the HTML format is not
 documented here, because it does not depend on the DSB API used.
 
-# Section 3 - The Web API
+## 2.1 The Web API
+
 This is the API used mainly by the DSBMobile Webapp. It **does**
 require a session kept in HTTP cookies. This API's requests are quite
 horrible and officially implemented in hundreds of lines of weirdly
-obfuscated JavaScript.
+obfuscated JavaScript. Its similarities to the Android API, however,
+are quite obvious.
 
-## Login
+### Login
+
 Before you can do anything else, you first have to login.
+
+<!-- vim: set wrap! : -->
