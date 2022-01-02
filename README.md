@@ -1,5 +1,6 @@
 # Adsignificamus
-These are some docs for heinekingmedia's DSBMobile API.
+These are some docs for heinekingmedia's DSBMobile APIs.
+Additionally, we may soon document Untis's HTML.
 
 # Licensing
 You can license the files in this repository under the terms of the
@@ -120,13 +121,76 @@ The arguments are `?bundleid=BUNDLE&appversion=VER&osversion=OSVER&pushid&user=U
 Timetables are gotten from
 `https://mobileapi.dsbcontrol.de/dsbtimetables?authid=TOKEN`, where `TOKEN`
 is the token from Auth. The server then responds with a JSON array of entries
-that are reasonably complex, but if you just want the URLs to the substitutions:
+that are reasonably complex. Each one represents a timetable/substitution plan
+and looks like this:
 
-```dart
-for (var plan in json) {
-  downloadAndOutputHtmlPlan(plan['Childs'][0]['Detail']);
+```json
+{
+  "Id": "ID",
+  "Date": "DATE",
+  "Title": "TITLE",
+  "Detail": "",
+  "Tags": "",
+  "ConType": 2,
+  "Prio": 0,
+  "Index": 0,
+  "Childs": CHILDS,
+  "Preview": ""
 }
 ```
+
+`ID` is a (supposedly random) UUID.
+
+`DATE` is a date and time in the format `%d.%m.%Y %H:%M`.
+(e.g. `13.12.2016 18:00`)
+
+As far as we currently know, the `Preview`, `Tags` and `Detail` are actually
+always empty strings, the `Index` and `Prio`rity always 0, and `ConType` is
+always 2.
+<!--TODO: check this using aggregamus-->
+
+`CHILDS` is another JSON list of very similar objects that represent "pages",
+a feature discovered very late
+([1.5 years into Amplissimus](https://github.com/Ampless/dsbuntis/issues/10)),
+since most schools tend to not use multiple ones. Every page looks like this:
+
+```json
+{
+  "Id": "TABLE_ID",
+  "Date": "DATE",
+  "Title": "TITLE",
+  "Detail": "DETAIL",
+  "Tags": "",
+  "ConType": CONTYPE,
+  "Prio": 0,
+  "Index": INDEX,
+  "Childs": [],
+  "Preview": "PREVIEW"
+}
+```
+
+`TABLE` is the `ID` of the table.
+
+`ID` is some (small) integer like `123`, `371` or `820`.
+
+`DATE` is another date and time in the format `%d.%m.%Y %H:%M`.
+
+In the two real-world schools tested, `TITLE` is always `subst_001`, but the
+public/test account shows, that it might not be.
+
+`DETAIL` is the full URL pointing to the HTML of the plan in question.
+(e.g. `https://light.dsbcontrol.de/DSBlightWebsite/Data/13ccccbb-e6a8-466a-addc-00bba830c6cf/4f301632-7422-4186-96a2-2b7911f54bc5/Vertretungen-Woche.htm`)
+
+`CONTYPE` is another integer, usually 6, sometimes 4.
+
+`INDEX` is yet another integer that may (!) be intended for sorting the pages.
+
+`PREVIEW` is the path to the preview PNG hosted on the preview endpoint (usually `https://light.dsbcontrol.de/DSBlightWebsite/Data/`).
+(e.g. `13ccccbb-e6a8-466a-addc-00bba830c6cf/4f301632-7422-4186-96a2-2b7911f54bc5/preview.png`)
+
+As far as we currently know, the `Tags` is actually always an empty string,
+the `Prio`rity always 0, and `Childs` always an empty list.
+<!--TODO: check this using aggregamus-->
 
 Parsing the plans from the HTML depends on the format of them, which
 usually is like Untis always does HTML. But the HTML format is not
