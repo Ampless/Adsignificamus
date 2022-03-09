@@ -101,9 +101,6 @@ There are two requests needed for getting substitution plans:
 Auth is sent to `https://mobileapi.dsbcontrol.de/authid`
 with the arguments appended to it.
 
-The server then responds with a new session/token in double quotes.
-(or `""` if the credentials are invalid)
-
 #### Arguments
 
 The arguments are `?bundleid=BUNDLE&appversion=VER&osversion=OSVER&pushid&user=USERNAME&password=PASSWORD`.
@@ -115,6 +112,16 @@ The arguments are `?bundleid=BUNDLE&appversion=VER&osversion=OSVER&pushid&user=U
 `VER` is the DSBMobile app version.
 
 `OSVER` is the OS version, for example on Android the API Version.
+
+#### Response
+
+The server then responds with a new session/token in double quotes.
+(or `""` if the credentials are invalid)
+
+The tokens are UUIDs that are always the same for the same `USERNAME` (and
+`PASSWORD`), which means that (a) they can be cached indefinitely and (b) could
+be generated on the client side somehow, if it was known, which exact algorithms
+are used.
 
 ### Timetables
 
@@ -152,7 +159,7 @@ always 2.
 `CHILDS` is another JSON list of very similar objects that represent "pages",
 a feature discovered very late
 ([1.5 years into Amplissimus](https://github.com/Ampless/dsbuntis/issues/10)),
-since most schools tend to not use multiple ones. Every page looks like this:
+since most schools tend not to use multiple ones. Every page looks like this:
 
 ```json
 {
@@ -176,14 +183,15 @@ since most schools tend to not use multiple ones. Every page looks like this:
 `DATE` is another date and time in the format `%d.%m.%Y %H:%M`.
 
 In the two real-world schools tested, `TITLE` is always `subst_001`, but the
-public/test account shows, that it might not be.
+public/test account shows that it might not be.
 
-`DETAIL` is the full URL pointing to the HTML of the plan in question.
+`DETAIL` is the full URL pointing to the content (usually HTML) of the plan in question.
 (e.g. `https://light.dsbcontrol.de/DSBlightWebsite/Data/13ccccbb-e6a8-466a-addc-00bba830c6cf/4f301632-7422-4186-96a2-2b7911f54bc5/Vertretungen-Woche.htm`)
 
-`CONTYPE` is another integer, usually 6, sometimes 4.
+`CONTYPE` is another integer, usually 6, sometimes 4. It **seems** to be 6 if
+`DETAIL` is an HTML and 4 if it is a PNG. <!--TODO: investigate-->
 
-`INDEX` is yet another integer that may (!) be intended for sorting the pages.
+`INDEX` is yet another integer that **may** be intended for sorting the pages.
 
 `PREVIEW` is the path to the preview PNG hosted on the preview endpoint (usually `https://light.dsbcontrol.de/DSBlightWebsite/Data/`).
 (e.g. `13ccccbb-e6a8-466a-addc-00bba830c6cf/4f301632-7422-4186-96a2-2b7911f54bc5/preview.png`)
