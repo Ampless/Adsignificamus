@@ -22,43 +22,41 @@ implementation each.
 ## The implementations
 This is an incomplete list of DSBMobile API implementations:
 
+<!--TODO: split between DSB and Untis implementations-->
+
 ### Mobile API
 
-| Implementation                                                             | Language   | Data types                    | Extra features                                          | Bundle ID                   | App Version        | OS Version         |
-|----------------------------------------------------------------------------|------------|-------------------------------|---------------------------------------------------------|-----------------------------|--------------------|--------------------|
-| [dsbuntis ≥3](https://github.com/Ampless/dsbuntis)                         | Dart       | Plans (others with a raw API) | Sorting, Searching and DSB-based Previews               | de.heinekingmedia.dsbmobile | 36 (configurable)  | 30 (configurable)  |
-| [dsb-api](https://github.com/CinePlays/dsb-api)                            | Dart       | Plans, News, Documents        | Violates Ampless Copyleft (no notice about copied code) | de.heinekingmedia.dsbmobile | 36                 | 30                 |
-| [pydsb (1) ≥2.2](https://github.com/sn0wmanmj/pydsb)                       | Python     | Plans, News, Postings         | DSB-based Previews                                      | de.heinekingmedia.dsbmobile | 35                 | 22                 |
-| [dsbmobile.js](https://github.com/Tch1b0/dsbmobile.js)                     | TypeScript | Plans, News, Documents        | ?                                                       | ? (probably empty)          | ? (probably empty) | ? (probably empty) |
-| [vertretungsplan.io](https://codeberg.org/vertretungsplan/integration-dsb) | TypeScript | Plans, News, Documents        |                                                         | (empty)                     | (empty)            | (empty)            |
-| [DSBDirect](https://notabug.org/fynngodau/DSBDirect)                       | Java       | Plans, News, Documents        |                                                         | (empty)                     | (empty)            | (empty)            |
+| Implementation                                                             | Language   | Data types               | Extra features                         | Bundle ID                   | App Version        | OS Version         |
+|----------------------------------------------------------------------------|------------|--------------------------|----------------------------------------|-----------------------------|--------------------|--------------------|
+| [dsbuntis ≥3](https://github.com/Ampless/dsbuntis)                         | Dart       | Plans, News, Documents\* | Sorting, Searching, DSB-based Previews | de.heinekingmedia.dsbmobile | 36 (configurable)  | 30 (configurable)  |
+| [dsb-api](https://github.com/CinePlays/dsb-api)                            | Dart       | Plans, News, Documents   | Probably violates Ampless Copyleft     | de.heinekingmedia.dsbmobile | 36                 | 30                 |
+| [pydsb (1) ≥2.2](https://github.com/sn0wmanmj/pydsb)                       | Python     | Plans, News, Postings    | DSB-based Previews                     | de.heinekingmedia.dsbmobile | 35                 | 22                 |
+| [dsbmobile.js](https://github.com/Tch1b0/dsbmobile.js)                     | TypeScript | Plans, News, Documents   | ?                                      | ? (probably empty)          | ? (probably empty) | ? (probably empty) |
+| [vertretungsplan.io](https://codeberg.org/vertretungsplan/integration-dsb) | TypeScript | Plans, News, Documents   |                                        | (empty)                     | (empty)            | (empty)            |
+| [DSBDirect](https://notabug.org/fynngodau/DSBDirect)                       | Java       | Plans, News, Documents   |                                        | (empty)                     | (empty)            | (empty)            |
+
+\* dsbuntis supports every other data type that might exists through a very raw API.
 
 ### Android API
 
-| Implementation                                                                  | Language   | Data types            | Extra features & drawbacks  | Bundle ID                               | Device   | App Version | OS Version | Simulated Language |
-|---------------------------------------------------------------------------------|------------|-----------------------|-----------------------------|-----------------------------------------|----------|-------------|------------|--------------------|
-| [dsbuntis <3](https://github.com/Ampless/dsbuntis)                              | Dart       | Plans                 | Sorting and Searching       | de.heinekingmedia.dsbmobile             | SM-G950F | 2.5.9       | 29 10.0    | de (configurable)  |
-| [pydsb (1) 2.0-2.1](https://github.com/sn0wmanmj/pydsb)                         | Python     | Plans, News, Postings | DSB-based previews          | de.heinekingmedia.dsbmobile             | Pixel 3  | 2.5.9       | 27 8.1.0   | de                 |
-| [OpenDSBMobile](https://github.com/KaiJan57/OpenDSBmobile)                      | Java       | Plans, News, Postings | reimplementation of the app | de.heinekingmedia.dsbmobile             | (empty)  | 2.5.9       | (empty)    | your os language   |
-| [DSBMobile-API](https://github.com/Sematre/DSBmobile-API)                       | Java       | Plans, News           | User-Agent spoofing         | de.heinekingmedia.dsbmobile             | Nexus 4  | 2.5.9       | 27 8.1.0   | de                 |
-| [DSBApi](https://github.com/nerrixDE/DSBApi)                                    | Python     | Plans                 |                             | de.heinekingmedia.dsbmobile             | SM-G930F | 2.5.9       | 27 8.1.0   | de                 |
-| [DSBAPI](https://github.com/TheNoim/DSBAPI)                                     | JavaScript | raw json              | User-Agent spoofing         | de.digitales-schwarzes-brett.dsblight   | iPhone   | 2.5.6       | 13.2.2     | en-DE              |
-| [dsb-go](https://github.com/irgendwr/dsb-go)                                    | Go         | Plans, News           | User-Agent "dsb-go"         | de.heinekingmedia.dsbmobile             | Nexus 4  | 2.5.9       | 27 8.1.0   | de                 |
-| [Vertretungsplangak\_Bot](https://github.com/MakerStuff/Vertretungsplangak_Bot) | Python     | ?                     | no parsing                  | de.heinekingmedia.dsbmobile             | SM-G935F | 2.5.9       | 28 9       | de                 |
-| [dsbmobile-php-api](https://github.com/irgendwr/dsbmobile-php-api)              | PHP        | Plans, News           | faked Referer header        | de.heinekingmedia.inhouse.dsbmobile.web | WebApp   | 2.3         | (empty)    | de                 |
-| [dsbmobile\_api](https://github.com/spnda/dsbmobile_api)                        | Dart       | ?                     | ?                           | de.heinekingmedia.dsbmobile             | Nexus 4  | 2.5.9       | 27 8.1.0   | de (configurable)  |
+| Implementation                                                                  | Language   | Data types            | Extra features & drawbacks  | Bundle ID                               | Device   | App Version | OS Version | Language          |
+|---------------------------------------------------------------------------------|------------|-----------------------|-----------------------------|-----------------------------------------|----------|-------------|------------|-------------------|
+| [dsbuntis <3](https://github.com/Ampless/dsbuntis)                              | Dart       | Plans                 | Sorting and Searching       | de.heinekingmedia.dsbmobile             | SM-G950F | 2.5.9       | 29 10.0    | de (configurable) |
+| [pydsb (1) 2.0-2.1](https://github.com/sn0wmanmj/pydsb)                         | Python     | Plans, News, Postings | DSB-based previews          | de.heinekingmedia.dsbmobile             | Pixel 3  | 2.5.9       | 27 8.1.0   | de                |
+| [OpenDSBMobile](https://github.com/KaiJan57/OpenDSBmobile)                      | Java       | Plans, News, Postings | reimplementation of the app | de.heinekingmedia.dsbmobile             | (empty)  | 2.5.9       | (empty)    | your os language  |
+| [DSBMobile-API](https://github.com/Sematre/DSBmobile-API)                       | Java       | Plans, News           | User-Agent spoofing         | de.heinekingmedia.dsbmobile             | Nexus 4  | 2.5.9       | 27 8.1.0   | de                |
+| [DSBApi](https://github.com/nerrixDE/DSBApi)                                    | Python     | Plans                 |                             | de.heinekingmedia.dsbmobile             | SM-G930F | 2.5.9       | 27 8.1.0   | de                |
+| [DSBAPI](https://github.com/TheNoim/DSBAPI)                                     | JavaScript | raw json              | User-Agent spoofing         | de.digitales-schwarzes-brett.dsblight   | iPhone   | 2.5.6       | 13.2.2     | en-DE             |
+| [dsb-go](https://github.com/irgendwr/dsb-go)                                    | Go         | Plans, News           | User-Agent "dsb-go"         | de.heinekingmedia.dsbmobile             | Nexus 4  | 2.5.9       | 27 8.1.0   | de                |
+| [Vertretungsplangak\_Bot](https://github.com/MakerStuff/Vertretungsplangak_Bot) | Python     | ?                     | no parsing                  | de.heinekingmedia.dsbmobile             | SM-G935F | 2.5.9       | 28 9       | de                |
+| [dsbmobile-php-api](https://github.com/irgendwr/dsbmobile-php-api)              | PHP        | Plans, News           | faked Referer header        | de.heinekingmedia.inhouse.dsbmobile.web | WebApp   | 2.3         | (empty)    | de                |
+| [dsbmobile\_api](https://github.com/spnda/dsbmobile_api)                        | Dart       | ?                     | ?                           | de.heinekingmedia.dsbmobile             | Nexus 4  | 2.5.9       | 27 8.1.0   | de (configurable) |
 
 ### Web API
 
-#### [Vertretungsplangak\_Bot (2)](https://github.com/MakerStuff/Vertretungsplangak_Bot)
-* Language: Python
-* Drawbacks: no parsing, constant Date and LastUpdate
-* Supported requests: 1 (GetData)
-* Simulated Bundle ID: de.heinekingmedia.inhouse.dsbmobile.web
-* Simulated Device: WebApp
-* Simulated Version: 2.3
-* Simulated OS Version: Mozilla/5.0 (X11; Linux x86\_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.70 Safari/537.36
-* Simulated Language: German (de)
+| Implementation                                                                      | Language | Drawbacks                                | Supported requests | Bundle ID                               | Device | Version | OS Version                                                                                                | Language |
+|-------------------------------------------------------------------------------------|----------|------------------------------------------|--------------------|-----------------------------------------|--------|---------|-----------------------------------------------------------------------------------------------------------|----------|
+| [Vertretungsplangak\_Bot (2)](https://github.com/MakerStuff/Vertretungsplangak_Bot) | Python   | no parsing, constant Date and LastUpdate | 1 (GetData)        | de.heinekingmedia.inhouse.dsbmobile.web | WebApp | 2.3     | Mozilla/5.0 (X11; Linux x86\_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/78.0.3904.70 Safari/537.36 | de       |
 
 ### iOS API
 
@@ -73,15 +71,13 @@ This is an incomplete list of DSBMobile API implementations:
 
 ### Other
 
-###### [DSBot](https://github.com/sargantana/DSBot)
-Shell (wget)
-* API: Unknown (looks like Web at first glance, but is significantly different)
-* Supported data types: plans (not 100% sure about that)
-* Supported extra drawbacks: no parsing
+| Implementation                               | Language     | API                                                                      | Data types                       | Drawbacks  |
+|----------------------------------------------|--------------|--------------------------------------------------------------------------|----------------------------------|------------|
+| [DSBot](https://github.com/sargantana/DSBot) | Shell (wget) | Unknown (looks like Web at first glance, but is significantly different) | plans (not 100% sure about that) | no parsing |
 
 ### Other interesting URLs
 
-These are some resources for learing things, you might need while
+These are some resources for learning things, you might need while
 building DSB API implementations:
 
 * https://pastebin.com/7XZD38V5
@@ -124,6 +120,8 @@ be generated on the client side somehow, if it was known, which exact algorithms
 are used.
 
 ### Timetables
+
+<!--TODO: make all of this general-->
 
 Timetables are gotten from
 `https://mobileapi.dsbcontrol.de/dsbtimetables?authid=TOKEN`, where `TOKEN`
@@ -189,7 +187,8 @@ public/test account shows that it might not be.
 (e.g. `https://light.dsbcontrol.de/DSBlightWebsite/Data/13ccccbb-e6a8-466a-addc-00bba830c6cf/4f301632-7422-4186-96a2-2b7911f54bc5/Vertretungen-Woche.htm`)
 
 `CONTYPE` is another integer, usually 6, sometimes 4. It **seems** to be 6 if
-`DETAIL` is an HTML and 4 if it is a PNG. <!--TODO: investigate-->
+`DETAIL` is an HTML and 4 if it is an image (PNG/JPEG), if `DETAIL` was a string
+of text, it would be 5 as far as we know. <!--TODO: investigate-->
 
 `INDEX` is yet another integer that **may** be intended for sorting the pages.
 
