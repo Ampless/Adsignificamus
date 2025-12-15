@@ -39,8 +39,8 @@ This is an incomplete list of DSBMobile API implementations:
 | [vertretungsplan.io](https://codeberg.org/vertretungsplan/integration-dsb) | TypeScript | Plans, News, Documents   |                                        | (empty)                     | (empty)            | (empty)            |
 | [DSBDirect](https://notabug.org/fynngodau/DSBDirect)                       | Java       | Plans, News, Documents   |                                        | (empty)                     | (empty)            | (empty)            |
 
-\* dsbuntis supports every other data type that might exists through a very raw
-API.
+\* dsbuntis supports every other data type that might exist through a very
+low-level API.
 
 ### Android API
 
@@ -91,6 +91,10 @@ API implementations:
 - https://light.dsbcontrol.de/DSBlightWebsite/(S(kvgpcwcoqorwq3xxgbx42u2b))/Homepage/IFrame.aspx
 
 # 1 The Mobile API
+
+> ![NOTE] The Mobile API is also extensively documented on
+> [the DSBDirect wiki](https://notabug.org/fynngodau/DSBDirect/wiki/mobileapi.dsbcontrol.de),
+> which is unavailable and not archived as of December 2025.
 
 This is the simplest known API of DSBMobile. It **does** require the use of
 sessions/tokens. Like the other APIs it uses HTTPS for what could be referred to
