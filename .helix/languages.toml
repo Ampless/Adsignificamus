@@ -1,0 +1,5 @@
+[[language]]
+name = "markdown"
+auto-format = true
+formatter = { command = "deno", args = ["fmt", "--ext", "md", "-"] }
+soft-wrap = { enable = false }
