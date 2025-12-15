@@ -17,10 +17,10 @@ to us, and two more with only one implementation each.
 
 ## The APIs
 
-- Mobile API (Section 1)
-- Android API (Section 2)
-- Web API (Section 2.1)
-- iOS API (Section 3)
+- [Mobile API (Section 1)](#1-the-mobile-api)
+- [Android API (Section 2)](#2-the-android-api)
+- [Web API (Section 2.1)](#21-the-web-api)
+- iOS API (Section 3, TBD)
 
 ## The implementations
 
