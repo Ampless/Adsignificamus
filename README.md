@@ -92,7 +92,8 @@ API implementations:
 
 # 1 The Mobile API
 
-> ![NOTE] The Mobile API is also extensively documented on
+> ![NOTE]
+> The Mobile API is also extensively documented on
 > [the DSBDirect wiki](https://notabug.org/fynngodau/DSBDirect/wiki/mobileapi.dsbcontrol.de),
 > which is unavailable and not archived as of December 2025.
 
