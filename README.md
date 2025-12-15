@@ -147,32 +147,40 @@ always the token from Auth.
 From all of these, JSON lists are returned. They contain `Item`s, each of which
 might represent a Plan, Document, News item, etc. `Item`s look like this:
 
-```json
+```ts
 {
+  // a (supposedly random) UUID
   "Id": string,
+
+  // `%d.%m.%Y %H:%M` (e.g. `13.12.2016 18:00`)
+  // **might** have been displayed as "Last Updated" in old DSBMobile versions
   "Date": string,
+
+  // as displayed in the DSBMobile app
   "Title": string,
+
+  // payload (see below)
   "Detail": string,
+
+  // usually empty
   "Tags": string,
+
   "ConType": number,
+
+  // usually 0
   "Prio": number,
+
+  // usually 0, might be another number (might be useful for sorting?)
   "Index": number,
-  "Childs": list,
-  "Preview": string
+
+  // payload (see below)
+  "Childs": object[],
+
+  // the path of the preview PNG hosted on the preview endpoint (usually
+  // <https://light.dsbcontrol.de/DSBlightWebsite/Data/>)
+  "Preview": string,
 }
 ```
-
-`Id` is a (supposedly random) UUID.
-
-`Date` is a date and time in the format `%d.%m.%Y %H:%M`. (e.g.
-`13.12.2016 18:00`) It **might** be the one that was called something like "Last
-updated" a few DSBMobile app versions back.
-
-<!--TODO: check-->
-
-`Title` is the title displayed in DSBMobile.
-
-`Tags` is usually empty.
 
 <!--TODO: check-->
 
@@ -183,18 +191,10 @@ updated" a few DSBMobile app versions back.
 | `2`       | `Childs` | child `Item`s, like pages of the plan |
 | `4`       | `Detail` | link to an HTML web page              |
 | `5`       | `Detail` | string of text                        |
-| `6`       | `Detail` | link to an PNG/GIF image              |
+| `6`       | `Detail` | link to a PNG/GIF image               |
 
 If it doesn't contain data, `Childs` is an empty list (`[]`), `Detail` an empty
 string (`""`).
-
-`Prio` is usually `0`.
-
-`Index` is usually `0`, too, but it might sometimes be another number and
-therefore might be useful for sorting.
-
-`Preview` is the path of the preview PNG hosted on the preview endpoint (usually
-`https://light.dsbcontrol.de/DSBlightWebsite/Data/`).
 
 ##### Example
 
@@ -258,9 +258,10 @@ The list of timetables might look something like this
 
 # 2 The Android API
 
-This was the most-used API of DSBMobile. Most implementations used it It does
-**not** require any kind of session. Like the other APIs it uses HTTPS for what
-could be referred to as Layer 4 or 5 in the OSI Model.
+This was the most-used API of DSBMobile. Most implementations used it until it
+was shut down in early 2021. It does **not** require any kind of session. Like
+the other APIs it uses HTTPS for what could be referred to as Layer 4 or 5 in
+the OSI Model.
 
 ## Requests
 
@@ -290,47 +291,45 @@ The body of the request looks like this:
 ```
 
 DATA is the actual data compressed with GZIP and encoded as Base64. The actual
-data is a string, which for the request looks like this:
+data is a JSON-encoded string of the following schema:
 
-```js
+```ts
 {
-    "UserId": "USERNAME",
-    "UserPw": "PASSWORD",
-    "AppVersion": "APP_VERSION",
-    "Language": "LANGUAGE",
-    "OsVersion": "OS_VERSION",
-    "AppId": "APP_ID",
-    "Device": "DEVICE_NAME",
-    "BundleId": "BUNDLE_ID",
-    "Date": "DATETIME",
-    "LastUpdate": "DATETIME"
+  // username
+  "UserId": string,
+
+  // password
+  "UserPw": string,
+
+  // the version of the DSBMobile app you're pretending to run
+  "AppVersion": string,
+
+  // usually "de", some implementation allow for other languages
+  "Language": string,
+
+  // Android API Level + " " + Android Version
+  // usually a static string (e.g. "29 10.0")
+  "OsVersion": string,
+
+  // original purpose unclear, probably a unique UUID for each DSBMobile install
+  // most implementations generate a random UUIDv4 for each request
+  "AppId": string,
+
+  // model of the device running the app
+  // usually a static string (e.g. "SM-G950F")
+  "Device": string,
+
+  // the bundle id of the app
+  // most implementations pretend to be "de.heinekingmedia.dsbmobile"
+  "BundleId": string,
+
+  // the current datetime in JS Date.toISOString format, i.e. ISO 8601 with "Z"
+  // at the end to indicate UTC timezone
+  "Date": string,
+  // the same as Date
+  "LastUpdate": string,
 }
 ```
-
-`USERNAME` and `PASSWORD` are obvious.
-
-`APP_VERSION` is the version of the DSBMobile app you are running. (or pretend
-to)
-
-`LANGUAGE` should usually be `de`, because DSBMobile is used only in Germany and
-only in German, but some implementations allow for other languages.
-
-`OS_VERSION` should be the Android API Level and Android Version joined by a
-single space. Of course most implementations send a static string for a bunch of
-reasons.
-
-What `APP_ID` is supposed to be is not really clear, most implementations just
-generate a random v4 UUID, but probably it is supposed to be unique to every
-instance of the app and not to every request.
-
-`DEVICE_NAME` is supposed to be the model of the device running the app, most
-implementations just use some recent Samsung Galaxy phones.
-
-`BUNDLE_ID` is the bundle id of the app, with most implementations pretending to
-be `de.heinekingmedia.dsbmobile`.
-
-`DATETIME` is the current date and time as printed by ECMAScript, which is ISO
-8601 with a Z at the end.
 
 ### Response
 
